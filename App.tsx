@@ -6,24 +6,42 @@
  */
 
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import {
+  Text,
   View,
 } from 'react-native';
 
-import {
-  Header,
-} from 'react-native/Libraries/NewAppScreen';
+const baseFontSize = 16;
+const fontFamily = "Arial"; // "Cochin"
+
+const containerStyle = {height: '50%', width: '50%', top: 100} as const;
+
+const baseStyle = {
+  fontWeight: 'bold',
+  textDecorationLine: 'underline',
+  fontFamily,
+  fontSize: baseFontSize,
+  lineHeight: baseFontSize * 1.9,
+} as const;
+
+const biggerFactor = 3;
+const biggerStyle = {
+  ...baseStyle,
+  fontSize: baseFontSize + biggerFactor,
+  lineHeight: (baseFontSize + biggerFactor) * 1.9,
+} as const;
 
 function App(): React.JSX.Element {
-
-  console.log('refresh main');
-
-  useForm();
-  
   return (
-    <View style={{backgroundColor: 'blue'}}>
-          <Header/>
+    <View style={containerStyle}>
+        <Text
+          style={baseStyle}
+          >
+            Here we display bold underline text in Arial font
+          <Text style={biggerStyle}>
+             Now let's increase the font size
+          </Text>
+        </Text>
     </View>
   );
 }
